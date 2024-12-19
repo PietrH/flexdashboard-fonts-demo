@@ -1,0 +1,96 @@
+---
+title: "Experiments with flexdashboard theming and sizing"
+output: 
+  flexdashboard::flex_dashboard:
+    theme:
+      primary: "#ED79F9"
+      navbar-bg: "#d5007e"
+      base_font: 
+        google: Atma
+      heading_font:
+        google: Sen
+      code_font:
+        google: 
+          # arguments to sass::font_google() 
+          family: Fira Code
+          local: false
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(DT)
+```
+Big plot with two tables
+=====================================
+Row {data-height=650}
+-----------------------------------------------------------------------
+
+### plot with height 650
+
+```{r}
+plot(cars)
+```
+
+Row {data-height=350}
+-----------------------------------------------------------------------
+
+### nice table of cars (350 height)
+
+```{r}
+datatable(cars)
+```
+
+### super static table (350 height)
+
+```{r}
+knitr::kable(cars)
+```
+Big table with two small plots
+=====================================
+Row {data-height=600}
+-----------------------------------------------------------------------
+### plot with height 600
+```{r}
+DT::datatable(Seatbelts)
+```
+
+Row {data-height=200}
+-----------------------------------------------------------------------
+
+### plot with height 200
+```{r}
+plot(Seatbelts)
+```
+
+Row {data-height=200}
+-----------------------------------------------------------------------
+
+### another plot with height 200
+```{r}
+plot(cars)
+```
+
+columns and rows {data-orientation=columns}
+=====================================
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+### column with width 300
+```{r}
+plot(cars)
+```
+
+Column {data-width=600}
+-----------------------------------------------------------------------
+
+
+### 600 wide table
+```{r}
+DT::datatable(Seatbelts)
+```
+
+### 600 wide plot
+```{r}
+plot(Seatbelts)
